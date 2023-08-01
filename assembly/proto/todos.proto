@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package todos;
+
+// @description Add todo to the todo list
+// @read-only false
+message add_todo_arguments {
+  string task = 1;
+}
+
+message add_todo_result {}
+
+// @description Returns the list of todos
+// @read-only true
+message get_todos_arguments {}
+
+message get_todos_result {
+  repeated string value = 1;
+}
+
+// @description The object keeing track of todos in chain state
+message todo_object {
+  repeated string tasks = 1;
+}

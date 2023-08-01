@@ -1,0 +1,19 @@
+{
+    "methods": {
+        "add_todo": {
+            "argument": "todos.add_todo_arguments",
+            "return": "todos.add_todo_result",
+            "description": "Add todo to the todo list",
+            "entry-point": "0xb9d032ea",
+            "read-only": false
+        },
+        "get_todos": {
+            "argument": "todos.get_todos_arguments",
+            "return": "todos.get_todos_result",
+            "description": "Returns the list of todos",
+            "entry-point": "0xba2281da",
+            "read-only": true
+        }
+    },
+    "types": "Cs4BChphc3NlbWJseS9wcm90by90b2Rvcy5wcm90bxIFdG9kb3MiKAoSYWRkX3RvZG9fYXJndW1lbnRzEhIKBHRhc2sYASABKAlSBHRhc2siEQoPYWRkX3RvZG9fcmVzdWx0IhUKE2dldF90b2Rvc19hcmd1bWVudHMiKAoQZ2V0X3RvZG9zX3Jlc3VsdBIUCgV2YWx1ZRgBIAMoCVIFdmFsdWUiIwoLdG9kb19vYmplY3QSFAoFdGFza3MYASADKAlSBXRhc2tzYgZwcm90bzM="
+}
