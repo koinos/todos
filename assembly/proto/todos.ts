@@ -158,4 +158,40 @@ export namespace todos {
       this.tasks = tasks;
     }
   }
+
+  export class todo_added_event {
+    static encode(message: todo_added_event, writer: Writer): void {
+      const unique_name_task = message.task;
+      if (unique_name_task !== null) {
+        writer.uint32(10);
+        writer.string(unique_name_task);
+      }
+    }
+
+    static decode(reader: Reader, length: i32): todo_added_event {
+      const end: usize = length < 0 ? reader.end : reader.ptr + length;
+      const message = new todo_added_event();
+
+      while (reader.ptr < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1:
+            message.task = reader.string();
+            break;
+
+          default:
+            reader.skipType(tag & 7);
+            break;
+        }
+      }
+
+      return message;
+    }
+
+    task: string | null;
+
+    constructor(task: string | null = null) {
+      this.task = task;
+    }
+  }
 }

@@ -22,3 +22,8 @@ message get_todos_result {
 message todo_object {
   repeated string tasks = 1;
 }
+
+// @description Event when a todo is added to the list
+message todo_added_event {
+  string task = 1;
+}

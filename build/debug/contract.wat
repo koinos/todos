@@ -4,14 +4,17 @@
  (type $i32_=>_i32 (func (param i32) (result i32)))
  (type $i32_i32_i32_=>_i32 (func (param i32 i32 i32) (result i32)))
  (type $i32_=>_none (func (param i32)))
+ (type $i32_=>_i64 (func (param i32) (result i64)))
  (type $none_=>_none (func))
  (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
  (type $none_=>_i32 (func (result i32)))
  (type $i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32) (result i32)))
- (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $i32_i64_=>_none (func (param i32 i64)))
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
+ (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
  (type $i32_i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32 i32) (result i32)))
  (type $i32_i32_i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32 i32 i32) (result i32)))
+ (type $i32_i32_i32_i64_i32_i64_i32_i64_i32_i64_i32_i64_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i64 i32 i64 i32 i64 i32 i64 i32 i64 i32 i32 i32) (result i32)))
  (import "env" "invoke_system_call" (func $~lib/@koinos/sdk-as/env/index/env.invokeSystemCall (param i32 i32 i32 i32 i32 i32) (result i32)))
  (global $~lib/as-proto/WireType/WireType.VARINT i32 (i32.const 0))
  (global $~lib/as-proto/WireType/WireType.FIXED_64 i32 (i32.const 1))
@@ -174,10 +177,12 @@
  (global $~lib/@koinos/sdk-as/systemCalls/System.ERROR_MESSAGE (mut i32) (i32.const 224))
  (global $assembly/state/SpaceIds/TODOS_SPACE_ID i32 (i32.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 880))
- (global $~lib/memory/__data_end i32 (i32.const 1260))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17644))
- (global $~lib/memory/__heap_base i32 (i32.const 17644))
+ (global $~lib/@koinos/sdk-as/util/base58/Base58.ALPHABET i32 (i32.const 784))
+ (global $~lib/@koinos/sdk-as/util/base58/Base58.BASE i32 (i32.const 58))
+ (global $~lib/rt/__rtti_base i32 (i32.const 1520))
+ (global $~lib/memory/__data_end i32 (i32.const 2012))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 18396))
+ (global $~lib/memory/__heap_base i32 (i32.const 18396))
  (global $~started (mut i32) (i32.const 0))
  (memory $0 1)
  (data (i32.const 16) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -200,15 +205,28 @@
  (data (i32.const 588) "\1c\00\00\00\00\00\00\00\00\00\00\00!\00\00\00\08\00\00\00\t\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 620) "\1c\00\00\00\00\00\00\00\00\00\00\00#\00\00\00\08\00\00\00\n\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 652) "\1c\00\00\00\00\00\00\00\00\00\00\00%\00\00\00\08\00\00\00\0b\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00(\00\00\00\08\00\00\00\0c\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 716) "\1c\00\00\00\00\00\00\00\00\00\00\00*\00\00\00\08\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 748) "\1c\00\00\00\00\00\00\00\00\00\00\00+\00\00\00\08\00\00\00\0e\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 780) "\1c\00\00\00\00\00\00\00\00\00\00\00,\00\00\00\08\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 812) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 844) "\1c\00\00\00\00\00\00\00\00\00\00\00.\00\00\00\08\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 880) "/\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\02\01\00\00\00\00\00\00\02\t\00\00\00\00\00\00A\00\00\00\02\00\00\00\00\00\00\00\n\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\01\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\1b\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (table $0 17 funcref)
- (elem $0 (i32.const 1) $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments.encode $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result.decode $assembly/proto/todos/todos.todo_object.decode $assembly/proto/todos/todos.todo_object.encode $assembly/state/TodoStorage/TodoStorage#constructor~anonymous|0 $assembly/proto/todos/todos.add_todo_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments.encode $assembly/proto/todos/todos.add_todo_result.encode $assembly/proto/todos/todos.get_todos_arguments.decode $assembly/proto/todos/todos.get_todos_result.encode)
+ (data (i32.const 684) "\1c\00\00\00\00\00\00\00\00\00\00\00&\00\00\00\08\00\00\00\0c\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 716) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\12\00\00\00a\00c\00c\00o\00u\00n\00t\00 \00\'\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 764) "\8c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00t\00\00\001\002\003\004\005\006\007\008\009\00A\00B\00C\00D\00E\00F\00G\00H\00J\00K\00L\00M\00N\00P\00Q\00R\00S\00T\00U\00V\00W\00X\00Y\00Z\00a\00b\00c\00d\00e\00f\00g\00h\00i\00j\00k\00m\00n\00o\00p\00q\00r\00s\00t\00u\00v\00w\00x\00y\00z\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 908) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00,\00\00\00\'\00 \00a\00u\00t\00h\00o\00r\00i\00z\00a\00t\00i\00o\00n\00 \00f\00a\00i\00l\00e\00d\00")
+ (data (i32.const 972) "\1c\00\00\00\00\00\00\00\00\00\00\00(\00\00\00\08\00\00\00\0d\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1004) "\1c\00\00\00\00\00\00\00\00\00\00\00+\00\00\00\08\00\00\00\0e\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1036) "\1c\00\00\00\00\00\00\00\00\00\00\00-\00\00\00\08\00\00\00\0f\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1068) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\18\00\00\00h\00e\00a\00d\00e\00r\00.\00p\00a\00y\00e\00e\00\00\00\00\00")
+ (data (i32.const 1116) "\1c\00\00\00\00\00\00\00\00\00\00\001\00\00\00\08\00\00\00\10\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1148) "\1c\00\00\00\00\00\00\00\00\00\00\003\00\00\00\08\00\00\00\11\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1180) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\18\00\00\00h\00e\00a\00d\00e\00r\00.\00p\00a\00y\00e\00r\00\00\00\00\00")
+ (data (i32.const 1228) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1260) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00,\00\00\00t\00o\00d\00o\00s\00.\00t\00o\00d\00o\00_\00a\00d\00d\00e\00d\00_\00e\00v\00e\00n\00t\00")
+ (data (i32.const 1324) "\1c\00\00\00\00\00\00\00\00\00\00\006\00\00\00\08\00\00\00\12\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1356) "\1c\00\00\00\00\00\00\00\00\00\00\008\00\00\00\08\00\00\00\13\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1388) "\1c\00\00\00\00\00\00\00\00\00\00\009\00\00\00\08\00\00\00\14\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1420) "\1c\00\00\00\00\00\00\00\00\00\00\00:\00\00\00\08\00\00\00\15\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1452) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1484) "\1c\00\00\00\00\00\00\00\00\00\00\00<\00\00\00\08\00\00\00\16\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1520) "=\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\02\01\00\00\00\00\00\00\02\t\00\00\00\00\00\00A\00\00\00\02\00\00\00\00\00\00\00\n\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\01\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\1b\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (table $0 23 funcref)
+ (elem $0 (i32.const 1) $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments.encode $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result.decode $assembly/proto/todos/todos.todo_object.decode $assembly/proto/todos/todos.todo_object.encode $assembly/state/TodoStorage/TodoStorage#constructor~anonymous|0 $assembly/proto/todos/todos.add_todo_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result.decode $assembly/proto/todos/todos.todo_added_event.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments.encode $assembly/proto/todos/todos.add_todo_result.encode $assembly/proto/todos/todos.get_todos_arguments.decode $assembly/proto/todos/todos.get_todos_result.encode)
  (export "main" (func $assembly/index/main))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
@@ -5088,6 +5106,244 @@
   local.get $2
   call $~lib/as-proto/Protobuf/Protobuf.decode<assembly/proto/todos/todos.add_todo_arguments>
  )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:type (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:account (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=4
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:data (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=8
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments.encode (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $0
+  i32.load
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 8
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $0
+   i32.load
+   call $~lib/as-proto/Writer/Writer#int32@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load offset=4
+  local.tee $2
+  i32.store
+  local.get $2
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 18
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $2
+   call $~lib/as-proto/Writer/Writer#bytes@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load offset=8
+  local.tee $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 26
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $3
+   call $~lib/as-proto/Writer/Writer#bytes@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result#set:value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store8
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result#constructor (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  i32.eqz
+  if
+   i32.const 1
+   call $~lib/rt/tlsf/__alloc
+   local.set $0
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result#set:value
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result#set:value
+  local.get $0
+ )
+ (func $~lib/as-proto/Reader/Reader#bool (param $0 i32) (result i32)
+  unreachable
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result.decode (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  local.get $1
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $0
+   i32.load offset=4
+  else
+   local.get $0
+   i32.load
+   local.get $1
+   i32.add
+  end
+  local.set $2
+  i32.const 0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result#constructor
+  local.set $3
+  loop $while-continue|0
+   local.get $0
+   i32.load
+   local.get $2
+   i32.lt_u
+   local.set $4
+   local.get $4
+   if
+    local.get $0
+    call $~lib/as-proto/Reader/Reader#uint32@virtual
+    local.set $5
+    block $break|1
+     block $case1|1
+      block $case0|1
+       local.get $5
+       i32.const 3
+       i32.shr_u
+       local.set $6
+       local.get $6
+       i32.const 1
+       i32.eq
+       br_if $case0|1
+       br $case1|1
+      end
+      local.get $3
+      local.get $0
+      call $~lib/as-proto/Reader/Reader#bool@virtual
+      call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result#set:value
+      br $break|1
+     end
+     local.get $0
+     local.get $5
+     i32.const 7
+     i32.and
+     call $~lib/as-proto/Reader/Reader#skipType@virtual
+     br $break|1
+    end
+    br $while-continue|0
+   end
+  end
+  local.get $3
+ )
+ (func $~lib/typedarray/Uint8Array#__get (param $0 i32) (param $1 i32) (result i32)
+  local.get $1
+  local.get $0
+  i32.load offset=8
+  i32.ge_u
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  i32.add
+  i32.load8_u
+ )
+ (func $~lib/typedarray/Uint8Array#__set (param $0 i32) (param $1 i32) (param $2 i32)
+  local.get $1
+  local.get $0
+  i32.load offset=8
+  i32.ge_u
+  if
+   unreachable
+  end
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  i32.add
+  local.get $2
+  i32.store8
+ )
+ (func $~lib/memory/memory.repeat (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  i32.const 0
+  local.set $4
+  local.get $2
+  local.get $3
+  i32.mul
+  local.set $5
+  loop $while-continue|0
+   local.get $4
+   local.get $5
+   i32.lt_u
+   local.set $6
+   local.get $6
+   if
+    local.get $0
+    local.get $4
+    i32.add
+    local.get $1
+    local.get $2
+    call $~lib/memory/memory.copy
+    local.get $4
+    local.get $2
+    i32.add
+    local.set $4
+    br $while-continue|0
+   end
+  end
+ )
+ (func $~lib/string/String.__concat (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  local.get $1
+  call $~lib/string/String#concat
+ )
  (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments#set:space (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -5252,9 +5508,6 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $~lib/as-proto/Reader/Reader#bool (param $0 i32) (result i32)
-  unreachable
- )
  (func $~lib/as-proto/Protobuf/Protobuf.decode<assembly/proto/todos/todos.todo_object>@varargs (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   block $1of1
    block $0of1
@@ -5397,6 +5650,292 @@
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments#set:field (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments.encode (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load
+  local.tee $2
+  i32.store
+  local.get $2
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 10
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $2
+   call $~lib/as-proto/Writer/Writer#string@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result#set:value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:message_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int32_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=4
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int64_value (param $0 i32) (param $1 i64)
+  local.get $0
+  local.get $1
+  i64.store offset=8
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint32_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=16
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint64_value (param $0 i32) (param $1 i64)
+  local.get $0
+  local.get $1
+  i64.store offset=24
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint32_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=32
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint64_value (param $0 i32) (param $1 i64)
+  local.get $0
+  local.get $1
+  i64.store offset=40
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed32_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=48
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed64_value (param $0 i32) (param $1 i64)
+  local.get $0
+  local.get $1
+  i64.store offset=56
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed32_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=64
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed64_value (param $0 i32) (param $1 i64)
+  local.get $0
+  local.get $1
+  i64.store offset=72
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bool_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store8 offset=80
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:string_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=84
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bytes_value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=88
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:type_url (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:value (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=4
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/as-proto/Reader/Reader#int32 (param $0 i32) (result i32)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#int64 (param $0 i32) (result i64)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#uint64 (param $0 i32) (result i64)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sint32 (param $0 i32) (result i32)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sint64 (param $0 i32) (result i64)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#fixed32 (param $0 i32) (result i32)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#fixed64 (param $0 i32) (result i64)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sfixed32 (param $0 i32) (result i32)
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sfixed64 (param $0 i32) (result i64)
+  unreachable
+ )
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#set:length_ (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=12
+ )
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#push (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  i32.load offset=12
+  local.set $2
+  local.get $2
+  i32.const 1
+  i32.add
+  local.set $3
+  local.get $0
+  local.get $3
+  i32.const 2
+  i32.const 1
+  call $~lib/array/ensureCapacity
+  i32.const 1
+  drop
+  local.get $0
+  i32.load offset=4
+  local.get $2
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  local.get $0
+  local.get $3
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#set:length_
+  local.get $3
+ )
+ (func $assembly/proto/todos/todos.todo_added_event#set:task (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $assembly/proto/todos/todos.todo_added_event.encode (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load
+  local.tee $2
+  i32.store
+  local.get $2
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 10
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $2
+   call $~lib/as-proto/Writer/Writer#string@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:name (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:data (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=4
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:impacted (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=8
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length (param $0 i32) (result i32)
+  local.get $0
+  i32.load offset=12
  )
  (func $assembly/proto/todos/todos.add_todo_result#constructor (param $0 i32) (result i32)
   local.get $0
@@ -6617,6 +7156,12 @@
   local.get $2
   call $~lib/array/Array<i32>#__uset
  )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#bool (param $0 i32) (result i32)
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#varint32
+  i32.const 0
+  i32.ne
+ )
  (func $~lib/as-proto/internal/FixedWriter/FixedWriter#bool (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -6648,11 +7193,555 @@
   i32.add
   call $~lib/as-proto/internal/FixedSizer/FixedSizer#set:len
  )
- (func $~lib/as-proto/internal/FixedReader/FixedReader#bool (param $0 i32) (result i32)
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#int32 (param $0 i32) (result i32)
   local.get $0
   call $~lib/as-proto/internal/FixedReader/FixedReader#varint32
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#varint64 (param $0 i32) (result i64)
+  (local $1 i64)
+  (local $2 i64)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $4
+  local.get $3
+  i32.load
+  local.set $5
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $4
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $5
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $5
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $5
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 7
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $4
+  local.get $3
+  i32.load
+  local.set $5
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $4
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $5
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 14
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $5
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $5
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 21
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $4
+  local.get $3
+  i32.load
+  local.set $5
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $4
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $5
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 28
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $5
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $5
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 35
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $4
+  local.get $3
+  i32.load
+  local.set $5
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $4
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $5
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 42
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $5
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $5
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 49
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $4
+  local.get $3
+  i32.load
+  local.set $5
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $4
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $5
+  i64.load8_u
+  local.tee $1
+  i64.const 127
+  i64.and
+  i64.const 56
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $1
+  i64.const 128
+  i64.lt_u
+  if
+   local.get $2
+   return
+  end
+  local.get $2
+  local.get $0
+  local.set $3
+  i32.const 1
+  local.set $5
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $5
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i64.load8_u
+  i64.const 1
+  i64.and
+  i64.const 63
+  i64.shl
+  i64.or
+  local.set $2
+  local.get $2
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#int64 (param $0 i32) (result i64)
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#varint64
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#uint64 (param $0 i32) (result i64)
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#varint64
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#sint32 (param $0 i32) (result i32)
+  (local $1 i32)
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#varint32
+  local.set $1
+  local.get $1
+  i32.const 1
+  i32.shr_u
   i32.const 0
-  i32.ne
+  local.get $1
+  i32.const 1
+  i32.and
+  i32.sub
+  i32.xor
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#sint64 (param $0 i32) (result i64)
+  (local $1 i64)
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#varint64
+  local.set $1
+  local.get $1
+  i64.const 1
+  i64.shr_u
+  i64.const 0
+  local.get $1
+  i64.const 1
+  i64.and
+  i64.sub
+  i64.xor
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#fixed32 (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  local.set $2
+  i32.const 4
+  local.set $1
+  local.get $2
+  i32.load
+  local.set $3
+  local.get $2
+  local.get $2
+  i32.load
+  local.get $1
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $2
+  i32.load
+  local.get $2
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $3
+  i32.load
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#fixed64 (param $0 i32) (result i64)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  local.get $0
+  local.set $2
+  i32.const 8
+  local.set $1
+  local.get $2
+  i32.load
+  local.set $3
+  local.get $2
+  local.get $2
+  i32.load
+  local.get $1
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $2
+  i32.load
+  local.get $2
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $3
+  i64.load
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#sfixed32 (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  local.set $1
+  local.get $1
+  local.set $3
+  i32.const 4
+  local.set $2
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $2
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i32.load
+ )
+ (func $~lib/as-proto/internal/FixedReader/FixedReader#sfixed64 (param $0 i32) (result i64)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  local.get $0
+  local.set $1
+  local.get $1
+  local.set $3
+  i32.const 8
+  local.set $2
+  local.get $3
+  i32.load
+  local.set $4
+  local.get $3
+  local.get $3
+  i32.load
+  local.get $2
+  i32.add
+  call $~lib/as-proto/Reader/Reader#set:ptr
+  local.get $3
+  i32.load
+  local.get $3
+  i32.load offset=4
+  i32.le_u
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $4
+  i64.load
  )
  (func $~lib/as-proto/Reader/Reader#uint32@virtual (param $0 i32) (result i32)
   (local $1 i32)
@@ -6927,6 +8016,27 @@
   end
   unreachable
  )
+ (func $~lib/as-proto/Reader/Reader#bool@virtual (param $0 i32) (result i32)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#bool
+   return
+  end
+  unreachable
+ )
  (func $~lib/as-proto/Writer/Writer#bool@virtual (param $0 i32) (param $1 i32)
   (local $2 i32)
   block $default
@@ -6959,7 +8069,7 @@
   end
   unreachable
  )
- (func $~lib/as-proto/Reader/Reader#bool@virtual (param $0 i32) (result i32)
+ (func $~lib/as-proto/Reader/Reader#int32@virtual (param $0 i32) (result i32)
   (local $1 i32)
   block $default
    block $case0
@@ -6975,7 +8085,175 @@
     br $default
    end
    local.get $0
-   call $~lib/as-proto/internal/FixedReader/FixedReader#bool
+   call $~lib/as-proto/internal/FixedReader/FixedReader#int32
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#int64@virtual (param $0 i32) (result i64)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#int64
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#uint64@virtual (param $0 i32) (result i64)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#uint64
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sint32@virtual (param $0 i32) (result i32)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#sint32
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sint64@virtual (param $0 i32) (result i64)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#sint64
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#fixed32@virtual (param $0 i32) (result i32)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#fixed32
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#fixed64@virtual (param $0 i32) (result i64)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#fixed64
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sfixed32@virtual (param $0 i32) (result i32)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#sfixed32
+   return
+  end
+  unreachable
+ )
+ (func $~lib/as-proto/Reader/Reader#sfixed64@virtual (param $0 i32) (result i64)
+  (local $1 i32)
+  block $default
+   block $case0
+    local.get $0
+    i32.const 8
+    i32.sub
+    i32.load
+    local.set $1
+    local.get $1
+    i32.const 9
+    i32.eq
+    br_if $case0
+    br $default
+   end
+   local.get $0
+   call $~lib/as-proto/internal/FixedReader/FixedReader#sfixed64
    return
   end
   unreachable
@@ -6997,6 +8275,13 @@
    call $~lib/rt/itcms/__visit
   end
   global.get $~lib/@koinos/sdk-as/systemCalls/System.ERROR_MESSAGE
+  local.tee $1
+  if
+   local.get $1
+   local.get $0
+   call $~lib/rt/itcms/__visit
+  end
+  global.get $~lib/@koinos/sdk-as/util/base58/Base58.ALPHABET
   local.tee $1
   if
    local.get $1
@@ -7488,6 +8773,47 @@
   local.get $1
   call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments>#__visit
  )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load offset=4
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=8
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit
+ )
+ (func $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>#__visit
+ )
  (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments~visit (param $0 i32) (param $1 i32)
   (local $2 i32)
   local.get $0
@@ -7597,6 +8923,206 @@
   local.get $1
   call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit
  )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=84
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=88
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/@koinos/proto-as/google/protobuf/any/any.Any~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=4
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result>#__visit
+ )
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  i32.const 1
+  drop
+  local.get $0
+  i32.load offset=4
+  local.set $2
+  local.get $2
+  local.get $0
+  i32.load offset=12
+  i32.const 2
+  i32.shl
+  i32.add
+  local.set $3
+  loop $while-continue|0
+   local.get $2
+   local.get $3
+   i32.lt_u
+   local.set $4
+   local.get $4
+   if
+    local.get $2
+    i32.load
+    local.set $5
+    local.get $5
+    if
+     local.get $5
+     local.get $1
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $2
+    i32.const 4
+    i32.add
+    local.set $2
+    br $while-continue|0
+   end
+  end
+  local.get $0
+  i32.load
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__visit
+ )
+ (func $assembly/proto/todos/todos.todo_added_event~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/function/Function<%28assembly/proto/todos/todos.todo_added_event%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28assembly/proto/todos/todos.todo_added_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28assembly/proto/todos/todos.todo_added_event%2C~lib/as-proto/Writer/Writer%29=>void>#__visit
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=4
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=8
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit
+ )
  (func $~lib/function/Function<%28assembly/proto/todos/todos.add_todo_result%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
   local.get $0
   i32.load offset=4
@@ -7647,256 +9173,340 @@
     block $assembly/proto/todos/todos.get_todos_result
      block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.get_todos_arguments>
       block $~lib/function/Function<%28assembly/proto/todos/todos.add_todo_result%2C~lib/as-proto/Writer/Writer%29=>void>
-       block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-        block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments
-         block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>
-          block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object
-           block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result
-            block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-             block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments
-              block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments>
-               block $assembly/proto/todos/todos.add_todo_arguments
-                block $~lib/function/Function<%28%29=>assembly/proto/todos/todos.todo_object|null>
-                 block $~lib/function/Function<%28assembly/proto/todos/todos.todo_object%2C~lib/as-proto/Writer/Writer%29=>void>
-                  block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.todo_object>
-                   block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>
-                    block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result
-                     block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                      block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object>
-                       block $~lib/array/Array<~lib/string/String>
-                        block $assembly/proto/todos/todos.todo_object
-                         block $assembly/state/TodoStorage/TodoStorage
-                          block $assembly/Todos/Todos
-                           block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>
-                            block $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data
-                             block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result
-                              block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                               block $~lib/@koinos/proto-as/koinos/chain/chain/chain.result
-                                block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments
-                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>
-                                  block $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data
-                                   block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                    block $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn
-                                     block $~lib/typedarray/Uint32Array
-                                      block $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space
-                                       block $~lib/as-proto/Reader/Reader
-                                        block $~lib/as-proto/internal/FixedReader/FixedReader
-                                         block $~lib/typedarray/Uint8Array
-                                          block $~lib/array/Array<i32>
-                                           block $~lib/array/Array<u32>
-                                            block $~lib/as-proto/internal/FixedSizer/FixedSizer
-                                             block $~lib/as-proto/Writer/Writer
-                                              block $~lib/as-proto/internal/FixedWriter/FixedWriter
-                                               block $~lib/arraybuffer/ArrayBufferView
-                                                block $~lib/string/String
-                                                 block $~lib/arraybuffer/ArrayBuffer
+       block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+        block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments
+         block $~lib/function/Function<%28assembly/proto/todos/todos.todo_added_event%2C~lib/as-proto/Writer/Writer%29=>void>
+          block $assembly/proto/todos/todos.todo_added_event
+           block $~lib/array/Array<~lib/typedarray/Uint8Array>
+            block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result>
+             block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result
+              block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+               block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments
+                block $~lib/@koinos/proto-as/google/protobuf/any/any.Any
+                 block $~lib/@koinos/proto-as/koinos/chain/value/value.value_type
+                  block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                   block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments
+                    block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>
+                     block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object
+                      block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result
+                       block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                        block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments
+                         block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>
+                          block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                           block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments
+                            block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments>
+                             block $assembly/proto/todos/todos.add_todo_arguments
+                              block $~lib/function/Function<%28%29=>assembly/proto/todos/todos.todo_object|null>
+                               block $~lib/function/Function<%28assembly/proto/todos/todos.todo_object%2C~lib/as-proto/Writer/Writer%29=>void>
+                                block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.todo_object>
+                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>
+                                  block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result
+                                   block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                    block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object>
+                                     block $~lib/array/Array<~lib/string/String>
+                                      block $assembly/proto/todos/todos.todo_object
+                                       block $assembly/state/TodoStorage/TodoStorage
+                                        block $assembly/Todos/Todos
+                                         block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>
+                                          block $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data
+                                           block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result
+                                            block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                             block $~lib/@koinos/proto-as/koinos/chain/chain/chain.result
+                                              block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments
+                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>
+                                                block $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data
+                                                 block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                  block $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn
+                                                   block $~lib/typedarray/Uint32Array
+                                                    block $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space
+                                                     block $~lib/as-proto/Reader/Reader
+                                                      block $~lib/as-proto/internal/FixedReader/FixedReader
+                                                       block $~lib/typedarray/Uint8Array
+                                                        block $~lib/array/Array<i32>
+                                                         block $~lib/array/Array<u32>
+                                                          block $~lib/as-proto/internal/FixedSizer/FixedSizer
+                                                           block $~lib/as-proto/Writer/Writer
+                                                            block $~lib/as-proto/internal/FixedWriter/FixedWriter
+                                                             block $~lib/arraybuffer/ArrayBufferView
+                                                              block $~lib/string/String
+                                                               block $~lib/arraybuffer/ArrayBuffer
+                                                                local.get $0
+                                                                i32.const 8
+                                                                i32.sub
+                                                                i32.load
+                                                                br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/internal/FixedWriter/FixedWriter $~lib/as-proto/Writer/Writer $~lib/as-proto/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/internal/FixedReader/FixedReader $~lib/as-proto/Reader/Reader $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space $~lib/typedarray/Uint32Array $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments $~lib/@koinos/proto-as/koinos/chain/chain/chain.result $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result> $assembly/Todos/Todos $assembly/state/TodoStorage/TodoStorage $assembly/proto/todos/todos.todo_object $~lib/array/Array<~lib/string/String> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object> $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.todo_object> $~lib/function/Function<%28assembly/proto/todos/todos.todo_object%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/todos/todos.todo_object|null> $assembly/proto/todos/todos.add_todo_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/value/value.value_type $~lib/@koinos/proto-as/google/protobuf/any/any.Any $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result> $~lib/array/Array<~lib/typedarray/Uint8Array> $assembly/proto/todos/todos.todo_added_event $~lib/function/Function<%28assembly/proto/todos/todos.todo_added_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/todos/todos.add_todo_result%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.get_todos_arguments> $assembly/proto/todos/todos.get_todos_result $~lib/function/Function<%28assembly/proto/todos/todos.get_todos_result%2C~lib/as-proto/Writer/Writer%29=>void> $invalid
+                                                               end
+                                                               return
+                                                              end
+                                                              return
+                                                             end
+                                                             local.get $0
+                                                             local.get $1
+                                                             call $~lib/arraybuffer/ArrayBufferView~visit
+                                                             return
+                                                            end
+                                                            local.get $0
+                                                            local.get $1
+                                                            call $~lib/as-proto/internal/FixedWriter/FixedWriter~visit
+                                                            return
+                                                           end
+                                                           return
+                                                          end
+                                                          local.get $0
+                                                          local.get $1
+                                                          call $~lib/as-proto/internal/FixedSizer/FixedSizer~visit
+                                                          return
+                                                         end
+                                                         local.get $0
+                                                         local.get $1
+                                                         call $~lib/array/Array<u32>~visit
+                                                         return
+                                                        end
+                                                        local.get $0
+                                                        local.get $1
+                                                        call $~lib/array/Array<i32>~visit
+                                                        return
+                                                       end
+                                                       local.get $0
+                                                       local.get $1
+                                                       call $~lib/typedarray/Uint8Array~visit
+                                                       return
+                                                      end
+                                                      local.get $0
+                                                      local.get $1
+                                                      call $~lib/as-proto/internal/FixedReader/FixedReader~visit
+                                                      return
+                                                     end
+                                                     return
+                                                    end
+                                                    local.get $0
+                                                    local.get $1
+                                                    call $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space~visit
+                                                    return
+                                                   end
+                                                   local.get $0
+                                                   local.get $1
+                                                   call $~lib/typedarray/Uint32Array~visit
+                                                   return
+                                                  end
                                                   local.get $0
-                                                  i32.const 8
-                                                  i32.sub
-                                                  i32.load
-                                                  br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/internal/FixedWriter/FixedWriter $~lib/as-proto/Writer/Writer $~lib/as-proto/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/internal/FixedReader/FixedReader $~lib/as-proto/Reader/Reader $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space $~lib/typedarray/Uint32Array $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments $~lib/@koinos/proto-as/koinos/chain/chain/chain.result $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result> $assembly/Todos/Todos $assembly/state/TodoStorage/TodoStorage $assembly/proto/todos/todos.todo_object $~lib/array/Array<~lib/string/String> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object> $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.todo_object> $~lib/function/Function<%28assembly/proto/todos/todos.todo_object%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/todos/todos.todo_object|null> $assembly/proto/todos/todos.add_todo_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/todos/todos.add_todo_result%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.get_todos_arguments> $assembly/proto/todos/todos.get_todos_result $~lib/function/Function<%28assembly/proto/todos/todos.get_todos_result%2C~lib/as-proto/Writer/Writer%29=>void> $invalid
+                                                  local.get $1
+                                                  call $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn~visit
+                                                  return
                                                  end
+                                                 local.get $0
+                                                 local.get $1
+                                                 call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                  return
                                                 end
+                                                local.get $0
+                                                local.get $1
+                                                call $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data~visit
                                                 return
                                                end
                                                local.get $0
                                                local.get $1
-                                               call $~lib/arraybuffer/ArrayBufferView~visit
+                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>~visit
                                                return
                                               end
                                               local.get $0
                                               local.get $1
-                                              call $~lib/as-proto/internal/FixedWriter/FixedWriter~visit
+                                              call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments~visit
                                               return
                                              end
+                                             local.get $0
+                                             local.get $1
+                                             call $~lib/@koinos/proto-as/koinos/chain/chain/chain.result~visit
                                              return
                                             end
                                             local.get $0
                                             local.get $1
-                                            call $~lib/as-proto/internal/FixedSizer/FixedSizer~visit
+                                            call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                             return
                                            end
                                            local.get $0
                                            local.get $1
-                                           call $~lib/array/Array<u32>~visit
+                                           call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result~visit
                                            return
                                           end
                                           local.get $0
                                           local.get $1
-                                          call $~lib/array/Array<i32>~visit
+                                          call $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data~visit
                                           return
                                          end
                                          local.get $0
                                          local.get $1
-                                         call $~lib/typedarray/Uint8Array~visit
+                                         call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>~visit
                                          return
                                         end
                                         local.get $0
                                         local.get $1
-                                        call $~lib/as-proto/internal/FixedReader/FixedReader~visit
+                                        call $assembly/Todos/Todos~visit
                                         return
                                        end
+                                       local.get $0
+                                       local.get $1
+                                       call $assembly/state/TodoStorage/TodoStorage~visit
                                        return
                                       end
                                       local.get $0
                                       local.get $1
-                                      call $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space~visit
+                                      call $assembly/proto/todos/todos.todo_object~visit
                                       return
                                      end
                                      local.get $0
                                      local.get $1
-                                     call $~lib/typedarray/Uint32Array~visit
+                                     call $~lib/array/Array<~lib/string/String>~visit
                                      return
                                     end
                                     local.get $0
                                     local.get $1
-                                    call $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn~visit
+                                    call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object>~visit
                                     return
                                    end
                                    local.get $0
                                    local.get $1
-                                   call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                   call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                    return
                                   end
                                   local.get $0
                                   local.get $1
-                                  call $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data~visit
+                                  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result~visit
                                   return
                                  end
                                  local.get $0
                                  local.get $1
-                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>~visit
+                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>~visit
                                  return
                                 end
                                 local.get $0
                                 local.get $1
-                                call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments~visit
+                                call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.todo_object>~visit
                                 return
                                end
                                local.get $0
                                local.get $1
-                               call $~lib/@koinos/proto-as/koinos/chain/chain/chain.result~visit
+                               call $~lib/function/Function<%28assembly/proto/todos/todos.todo_object%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                return
                               end
                               local.get $0
                               local.get $1
-                              call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                              call $~lib/function/Function<%28%29=>assembly/proto/todos/todos.todo_object|null>~visit
                               return
                              end
                              local.get $0
                              local.get $1
-                             call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result~visit
+                             call $assembly/proto/todos/todos.add_todo_arguments~visit
                              return
                             end
                             local.get $0
                             local.get $1
-                            call $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data~visit
+                            call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments>~visit
                             return
                            end
                            local.get $0
                            local.get $1
-                           call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>~visit
+                           call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments~visit
                            return
                           end
                           local.get $0
                           local.get $1
-                          call $assembly/Todos/Todos~visit
+                          call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                           return
                          end
                          local.get $0
                          local.get $1
-                         call $assembly/state/TodoStorage/TodoStorage~visit
+                         call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>~visit
                          return
                         end
                         local.get $0
                         local.get $1
-                        call $assembly/proto/todos/todos.todo_object~visit
+                        call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments~visit
                         return
                        end
                        local.get $0
                        local.get $1
-                       call $~lib/array/Array<~lib/string/String>~visit
+                       call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                        return
                       end
                       local.get $0
                       local.get $1
-                      call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object>~visit
+                      call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result~visit
                       return
                      end
                      local.get $0
                      local.get $1
-                     call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                     call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object~visit
                      return
                     end
                     local.get $0
                     local.get $1
-                    call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result~visit
+                    call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>~visit
                     return
                    end
                    local.get $0
                    local.get $1
-                   call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>~visit
+                   call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments~visit
                    return
                   end
                   local.get $0
                   local.get $1
-                  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.todo_object>~visit
+                  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                   return
                  end
                  local.get $0
                  local.get $1
-                 call $~lib/function/Function<%28assembly/proto/todos/todos.todo_object%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                 call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type~visit
                  return
                 end
                 local.get $0
                 local.get $1
-                call $~lib/function/Function<%28%29=>assembly/proto/todos/todos.todo_object|null>~visit
+                call $~lib/@koinos/proto-as/google/protobuf/any/any.Any~visit
                 return
                end
                local.get $0
                local.get $1
-               call $assembly/proto/todos/todos.add_todo_arguments~visit
+               call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments~visit
                return
               end
               local.get $0
               local.get $1
-              call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/todos/todos.add_todo_arguments>~visit
+              call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
               return
              end
              local.get $0
              local.get $1
-             call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments~visit
+             call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result~visit
              return
             end
             local.get $0
             local.get $1
-            call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+            call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result>~visit
             return
            end
            local.get $0
            local.get $1
-           call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result~visit
+           call $~lib/array/Array<~lib/typedarray/Uint8Array>~visit
            return
           end
           local.get $0
           local.get $1
-          call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object~visit
+          call $assembly/proto/todos/todos.todo_added_event~visit
           return
          end
          local.get $0
          local.get $1
-         call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>~visit
+         call $~lib/function/Function<%28assembly/proto/todos/todos.todo_added_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
          return
         end
         local.get $0
         local.get $1
-        call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments~visit
+        call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments~visit
         return
        end
        local.get $0
        local.get $1
-       call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+       call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
        return
       end
       local.get $0
@@ -9145,6 +10755,554 @@
   global.set $~lib/memory/__stack_pointer
   local.get $3
  )
+ (func $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments> (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedSizer/FixedSizer#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#finish
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/as-proto/Protobuf/Protobuf.decode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result> (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/as-proto/Protobuf/READER
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#reset
+  global.get $~lib/as-proto/Protobuf/READER
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_i32)
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/@koinos/sdk-as/systemCalls/System.checkAuthority (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $0
+  local.get $1
+  local.get $2
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#constructor
+  local.tee $3
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.const 672
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  call $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments>
+  local.tee $4
+  i32.store offset=8
+  global.get $~lib/@koinos/proto-as/koinos/chain/system_call_ids/system_call_ids.system_call_id.check_authority
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  i32.load offset=4
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.MAX_BUFFER_SIZE
+  local.get $4
+  i32.load offset=4
+  local.get $4
+  i32.load offset=8
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  i32.load offset=4
+  call $~lib/@koinos/sdk-as/env/index/env.invokeSystemCall
+  local.set $5
+  local.get $5
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  i32.const 0
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=12
+  local.get $7
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  call $~lib/typedarray/Uint8Array#slice
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  call $~lib/@koinos/sdk-as/systemCalls/System.checkErrorCode
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=16
+  local.get $7
+  i32.const 704
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=4
+  local.get $7
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  local.get $7
+  i32.store offset=12
+  local.get $7
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  call $~lib/as-proto/Protobuf/Protobuf.decode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>
+  local.set $6
+  local.get $6
+  i32.load8_u
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $7
+ )
+ (func $~lib/@koinos/sdk-as/util/base58/Base58.encode (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  (local $9 i32)
+  (local $10 i32)
+  (local $11 i32)
+  (local $12 i32)
+  (local $13 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  global.get $~lib/@koinos/sdk-as/util/base58/Base58.ALPHABET
+  local.set $13
+  global.get $~lib/memory/__stack_pointer
+  local.get $13
+  i32.store
+  local.get $13
+  i32.const 0
+  call $~lib/string/String#charAt
+  local.tee $1
+  i32.store offset=4
+  i32.const 0
+  local.set $2
+  i32.const 0
+  local.set $3
+  i32.const 0
+  local.set $4
+  local.get $0
+  call $~lib/typedarray/Uint8Array#get:length
+  local.set $5
+  loop $while-continue|0
+   local.get $4
+   local.get $5
+   i32.ne
+   if (result i32)
+    local.get $0
+    local.get $4
+    call $~lib/typedarray/Uint8Array#__get
+    i32.const 0
+    i32.eq
+   else
+    i32.const 0
+   end
+   local.set $6
+   local.get $6
+   if
+    local.get $4
+    i32.const 1
+    i32.add
+    local.set $4
+    local.get $2
+    i32.const 1
+    i32.add
+    local.set $2
+    br $while-continue|0
+   end
+  end
+  local.get $5
+  local.get $4
+  i32.sub
+  i32.const 2
+  i32.mul
+  i32.const 1
+  i32.add
+  i32.const 0
+  i32.shr_u
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $6
+  call $~lib/typedarray/Uint8Array#constructor
+  local.tee $7
+  i32.store offset=8
+  loop $while-continue|1
+   local.get $4
+   local.get $5
+   i32.ne
+   local.set $8
+   local.get $8
+   if
+    local.get $0
+    local.get $4
+    call $~lib/typedarray/Uint8Array#__get
+    local.set $9
+    i32.const 0
+    local.set $10
+    local.get $6
+    i32.const 1
+    i32.sub
+    local.set $11
+    loop $for-loop|2
+     local.get $9
+     i32.const 0
+     i32.ne
+     if (result i32)
+      i32.const 1
+     else
+      local.get $10
+      local.get $3
+      i32.lt_s
+     end
+     if (result i32)
+      local.get $11
+      i32.const -1
+      i32.ne
+     else
+      i32.const 0
+     end
+     local.set $12
+     local.get $12
+     if
+      local.get $9
+      i32.const 256
+      local.get $7
+      local.get $11
+      call $~lib/typedarray/Uint8Array#__get
+      i32.mul
+      i32.const 0
+      i32.shr_u
+      i32.add
+      local.set $9
+      local.get $7
+      local.get $11
+      local.get $9
+      global.get $~lib/@koinos/sdk-as/util/base58/Base58.BASE
+      i32.rem_s
+      i32.const 0
+      i32.shr_u
+      call $~lib/typedarray/Uint8Array#__set
+      local.get $9
+      global.get $~lib/@koinos/sdk-as/util/base58/Base58.BASE
+      i32.div_s
+      i32.const 0
+      i32.shr_u
+      local.set $9
+      local.get $11
+      i32.const 1
+      i32.sub
+      local.set $11
+      local.get $10
+      i32.const 1
+      i32.add
+      local.set $10
+      br $for-loop|2
+     end
+    end
+    local.get $9
+    i32.const 0
+    i32.eq
+    i32.eqz
+    if
+     unreachable
+    end
+    local.get $10
+    local.set $3
+    local.get $4
+    i32.const 1
+    i32.add
+    local.set $4
+    br $while-continue|1
+   end
+  end
+  local.get $6
+  local.get $3
+  i32.sub
+  local.set $8
+  loop $while-continue|3
+   local.get $8
+   local.get $6
+   i32.ne
+   if (result i32)
+    local.get $7
+    local.get $8
+    call $~lib/typedarray/Uint8Array#__get
+    i32.const 0
+    i32.eq
+   else
+    i32.const 0
+   end
+   local.set $11
+   local.get $11
+   if
+    local.get $8
+    i32.const 1
+    i32.add
+    local.set $8
+    br $while-continue|3
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  local.get $2
+  call $~lib/string/String#repeat
+  local.tee $11
+  i32.store offset=12
+  loop $for-loop|4
+   local.get $8
+   local.get $6
+   i32.lt_s
+   local.set $12
+   local.get $12
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.get $11
+    global.get $~lib/@koinos/sdk-as/util/base58/Base58.ALPHABET
+    local.set $13
+    global.get $~lib/memory/__stack_pointer
+    local.get $13
+    i32.store offset=16
+    local.get $13
+    local.get $7
+    local.get $8
+    call $~lib/typedarray/Uint8Array#__get
+    call $~lib/string/String#charAt
+    local.set $13
+    global.get $~lib/memory/__stack_pointer
+    local.get $13
+    i32.store offset=16
+    local.get $13
+    call $~lib/string/String.__concat
+    local.tee $11
+    i32.store offset=12
+    local.get $8
+    i32.const 1
+    i32.add
+    local.set $8
+    br $for-loop|4
+   end
+  end
+  local.get $11
+  local.set $13
+  global.get $~lib/memory/__stack_pointer
+  i32.const 20
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $13
+ )
+ (func $~lib/@koinos/sdk-as/systemCalls/System.require<bool> (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   local.get $2
+   local.get $1
+   call $~lib/@koinos/sdk-as/util/stringBytes/StringBytes.stringToBytes
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   call $~lib/@koinos/sdk-as/systemCalls/System.exit
+  end
+  local.get $0
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/@koinos/sdk-as/systemCalls/System.requireAuthority (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/@koinos/sdk-as/systemCalls/System.checkAuthority
+  i32.const 736
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=8
+  local.get $2
+  local.get $1
+  call $~lib/@koinos/sdk-as/util/base58/Base58.encode
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=12
+  local.get $2
+  call $~lib/string/String.__concat
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  i32.const 928
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  call $~lib/string/String.__concat
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  global.get $~lib/@koinos/proto-as/koinos/chain/error/error.error_code.authorization_failure
+  call $~lib/@koinos/sdk-as/systemCalls/System.require<bool>
+  drop
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments> (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
@@ -9284,7 +11442,7 @@
   i32.store
   global.get $~lib/memory/__stack_pointer
   local.get $3
-  i32.const 672
+  i32.const 992
   local.set $8
   global.get $~lib/memory/__stack_pointer
   local.get $8
@@ -9354,7 +11512,7 @@
   local.get $8
   i32.store offset=16
   local.get $8
-  i32.const 704
+  i32.const 1024
   local.set $8
   global.get $~lib/memory/__stack_pointer
   local.get $8
@@ -9655,7 +11813,7 @@
   i32.store
   global.get $~lib/memory/__stack_pointer
   local.get $4
-  i32.const 736
+  i32.const 1056
   local.set $7
   global.get $~lib/memory/__stack_pointer
   local.get $7
@@ -9744,10 +11902,283 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $assembly/Todos/Todos#add_todo (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments> (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedSizer/FixedSizer#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#finish
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/as-proto/Protobuf/Protobuf.decode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result> (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/as-proto/Protobuf/READER
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $0
+  call $~lib/as-proto/internal/FixedReader/FixedReader#reset
+  global.get $~lib/as-proto/Protobuf/READER
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_i32)
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/@koinos/sdk-as/systemCalls/System.getTransactionField (param $0 i32) (result i32)
+  (local $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 24
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments#constructor
+  local.tee $1
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.const 1136
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  call $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments>
+  local.tee $2
+  i32.store offset=8
+  global.get $~lib/@koinos/proto-as/koinos/chain/system_call_ids/system_call_ids.system_call_id.get_transaction_field
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  i32.load offset=4
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.MAX_BUFFER_SIZE
+  local.get $2
+  i32.load offset=4
+  local.get $2
+  i32.load offset=8
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  i32.load offset=4
+  call $~lib/@koinos/sdk-as/env/index/env.invokeSystemCall
+  local.set $3
+  local.get $3
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  i32.const 0
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=12
+  local.get $5
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  call $~lib/typedarray/Uint8Array#slice
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  call $~lib/@koinos/sdk-as/systemCalls/System.checkErrorCode
+  global.get $~lib/memory/__stack_pointer
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=16
+  local.get $5
+  i32.const 1168
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=12
+  local.get $5
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  call $~lib/as-proto/Protobuf/Protobuf.decode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result>
+  local.tee $4
+  i32.store offset=20
+  local.get $4
+  i32.load
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  i32.const 24
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $5
+ )
+ (func $~lib/as-proto/Protobuf/Protobuf.encode<assembly/proto/todos/todos.todo_added_event> (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedSizer/FixedSizer#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#finish
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments.encode (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 16
   i32.sub
@@ -9761,15 +12192,268 @@
   i64.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $0
-  i32.load offset=4
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
+  i32.load
+  local.tee $2
   i32.store
+  local.get $2
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 10
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $2
+   call $~lib/as-proto/Writer/Writer#string@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load offset=4
+  local.tee $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 18
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $3
+   call $~lib/as-proto/Writer/Writer#bytes@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load offset=8
+  local.tee $4
+  i32.store offset=8
   local.get $4
+  call $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length
+  i32.const 0
+  i32.ne
+  if
+   i32.const 0
+   local.set $5
+   loop $for-loop|0
+    local.get $5
+    local.get $4
+    call $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length
+    i32.lt_s
+    local.set $6
+    local.get $6
+    if
+     local.get $1
+     i32.const 26
+     call $~lib/as-proto/Writer/Writer#uint32@virtual
+     local.get $1
+     local.get $4
+     local.get $5
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__get
+     local.set $7
+     global.get $~lib/memory/__stack_pointer
+     local.get $7
+     i32.store offset=12
+     local.get $7
+     call $~lib/as-proto/Writer/Writer#bytes@virtual
+     local.get $5
+     i32.const 1
+     i32.add
+     local.set $5
+     br $for-loop|0
+    end
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments> (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedSizer/FixedSizer#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#finish
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@koinos/sdk-as/systemCalls/System.event (param $0 i32) (param $1 i32) (param $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $0
+  local.get $1
+  local.get $2
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#constructor
+  local.tee $3
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.const 1376
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  call $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments>
+  local.tee $4
+  i32.store offset=8
+  global.get $~lib/@koinos/proto-as/koinos/chain/system_call_ids/system_call_ids.system_call_id.event
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  i32.load offset=4
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.MAX_BUFFER_SIZE
+  local.get $4
+  i32.load offset=4
+  local.get $4
+  i32.load offset=8
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  i32.load offset=4
+  call $~lib/@koinos/sdk-as/env/index/env.invokeSystemCall
+  local.set $5
+  local.get $5
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=12
+  local.get $6
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  call $~lib/typedarray/Uint8Array#slice
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  call $~lib/@koinos/sdk-as/systemCalls/System.checkErrorCode
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/Todos/Todos#add_todo (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 36
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=24
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=32
+  global.get $~lib/@koinos/proto-as/koinos/chain/authority/authority.authorization_type.contract_call
+  call $~lib/@koinos/sdk-as/systemCalls/System.getContractId
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/@koinos/sdk-as/systemCalls/System.requireAuthority
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load offset=4
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=4
+  local.get $8
   call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object>#get
   local.tee $2
-  i32.store offset=4
+  i32.store offset=8
   local.get $2
   i32.eqz
   if
@@ -9780,15 +12464,15 @@
    i32.const 0
    call $assembly/proto/todos/todos.todo_object#constructor@varargs
    local.tee $2
-   i32.store offset=4
+   i32.store offset=8
   end
   local.get $2
   i32.load
-  local.set $4
+  local.set $8
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store
-  local.get $4
+  local.get $8
+  i32.store offset=4
+  local.get $8
   global.get $~lib/memory/__stack_pointer
   local.get $1
   i32.load
@@ -9800,30 +12484,178 @@
   else
    unreachable
   end
-  local.set $4
+  local.set $8
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store offset=8
-  local.get $4
+  local.get $8
+  i32.store
+  local.get $8
   call $~lib/array/Array<~lib/string/String>#push
   drop
   local.get $0
   i32.load offset=4
-  local.set $4
+  local.set $8
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store
-  local.get $4
+  local.get $8
+  i32.store offset=4
+  local.get $8
   local.get $2
   call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/todos/todos.todo_object>#put
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1088
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=4
+  local.get $8
+  call $~lib/@koinos/sdk-as/systemCalls/System.getTransactionField
+  local.tee $3
+  i32.store offset=12
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1200
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=4
+  local.get $8
+  call $~lib/@koinos/sdk-as/systemCalls/System.getTransactionField
+  local.tee $4
+  i32.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 2
+  i32.const 52
+  i32.const 1248
+  call $~lib/rt/__newArray
+  local.tee $6
+  i32.store offset=20
+  local.get $3
+  i32.const 0
+  i32.ne
+  if (result i32)
+   local.get $3
+   i32.load offset=88
+   i32.const 0
+   i32.ne
+  else
+   i32.const 0
+  end
+  if (result i32)
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.load offset=88
+   local.tee $5
+   i32.store offset=24
+   local.get $5
+   if (result i32)
+    local.get $5
+   else
+    unreachable
+   end
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store offset=4
+   local.get $8
+   call $~lib/typedarray/Uint8Array#get:length
+   i32.const 0
+   i32.gt_s
+  else
+   i32.const 0
+  end
+  if
+   local.get $6
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.load offset=88
+   local.tee $5
+   i32.store offset=24
+   local.get $5
+   if (result i32)
+    local.get $5
+   else
+    unreachable
+   end
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   call $~lib/array/Array<~lib/typedarray/Uint8Array>#push
+   drop
+  else
+   local.get $4
+   i32.const 0
+   i32.ne
+   if
+    local.get $6
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.load offset=88
+    local.tee $5
+    i32.store offset=24
+    local.get $5
+    if (result i32)
+     local.get $5
+    else
+     unreachable
+    end
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    call $~lib/array/Array<~lib/typedarray/Uint8Array>#push
+    drop
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  call $assembly/proto/todos/todos.todo_added_event#constructor
+  local.tee $5
+  i32.store offset=24
+  local.get $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.load
+  local.tee $7
+  i32.store offset=28
+  local.get $7
+  if (result i32)
+   local.get $7
+  else
+   unreachable
+  end
+  call $assembly/proto/todos/todos.todo_added_event#set:task
+  i32.const 1280
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=4
+  local.get $8
+  local.get $5
+  i32.const 1344
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=32
+  local.get $8
+  call $~lib/as-proto/Protobuf/Protobuf.encode<assembly/proto/todos/todos.todo_added_event>
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  local.get $6
+  call $~lib/@koinos/sdk-as/systemCalls/System.event
   i32.const 0
   call $assembly/proto/todos/todos.add_todo_result#constructor
-  local.set $4
+  local.set $8
   global.get $~lib/memory/__stack_pointer
-  i32.const 16
+  i32.const 36
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $4
+  local.get $8
  )
  (func $~lib/as-proto/Protobuf/Protobuf.encode<assembly/proto/todos/todos.add_todo_result> (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -10186,7 +13018,7 @@
      local.set $4
      global.get $~lib/memory/__stack_pointer
      local.get $4
-     i32.const 768
+     i32.const 1408
      local.set $5
      global.get $~lib/memory/__stack_pointer
      local.get $5
@@ -10204,7 +13036,7 @@
     local.get $5
     i32.store offset=12
     local.get $5
-    i32.const 800
+    i32.const 1440
     local.set $5
     global.get $~lib/memory/__stack_pointer
     local.get $5
@@ -10223,7 +13055,7 @@
     i32.store offset=20
     global.get $~lib/memory/__stack_pointer
     local.get $3
-    i32.const 864
+    i32.const 1504
     local.set $5
     global.get $~lib/memory/__stack_pointer
     local.get $5
@@ -12639,6 +15471,255 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
  )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#constructor (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 36
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:type
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:account
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:data
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:type
+  local.get $0
+  local.get $2
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:account
+  local.get $0
+  local.get $3
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments#set:data
+  local.get $0
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+ )
+ (func $~lib/string/String#charAt (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $1
+  local.get $0
+  call $~lib/string/String#get:length
+  i32.ge_u
+  if
+   i32.const 224
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $3
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 2
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $2
+  i32.store
+  local.get $2
+  local.get $0
+  local.get $1
+  i32.const 1
+  i32.shl
+  i32.add
+  i32.load16_u
+  i32.store16
+  local.get $2
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/string/String#repeat (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  call $~lib/string/String#get:length
+  local.set $2
+  local.get $1
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   i32.const 1
+  else
+   local.get $2
+   i64.extend_i32_s
+   local.get $1
+   i64.extend_i32_s
+   i64.mul
+   i64.const 1
+   i64.const 28
+   i64.shl
+   i64.gt_u
+  end
+  if
+   unreachable
+  end
+  local.get $1
+  i32.const 0
+  i32.eq
+  if (result i32)
+   i32.const 1
+  else
+   local.get $2
+   i32.eqz
+  end
+  if
+   i32.const 224
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $4
+   return
+  end
+  local.get $1
+  i32.const 1
+  i32.eq
+  if
+   local.get $0
+   local.set $4
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $4
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  local.get $1
+  i32.mul
+  i32.const 1
+  i32.shl
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $3
+  i32.store
+  local.get $3
+  local.get $0
+  local.get $2
+  i32.const 1
+  i32.shl
+  local.get $1
+  call $~lib/memory/memory.repeat
+  local.get $3
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+ )
+ (func $~lib/string/String#concat (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  call $~lib/string/String#get:length
+  i32.const 1
+  i32.shl
+  local.set $2
+  local.get $1
+  call $~lib/string/String#get:length
+  i32.const 1
+  i32.shl
+  local.set $3
+  local.get $2
+  local.get $3
+  i32.add
+  local.set $4
+  local.get $4
+  i32.const 0
+  i32.eq
+  if
+   i32.const 224
+   local.set $6
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $6
+   return
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $5
+  i32.store
+  local.get $5
+  local.get $0
+  local.get $2
+  call $~lib/memory/memory.copy
+  local.get $5
+  local.get $2
+  i32.add
+  local.get $1
+  local.get $3
+  call $~lib/memory/memory.copy
+  local.get $5
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+ )
  (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments#constructor (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   global.get $~lib/memory/__stack_pointer
@@ -12654,7 +15735,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 8
-   i32.const 36
+   i32.const 39
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -12694,7 +15775,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 38
+   i32.const 41
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -12728,7 +15809,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 12
-   i32.const 39
+   i32.const 42
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -13006,7 +16087,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 12
-   i32.const 41
+   i32.const 44
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -13037,6 +16118,770 @@
   global.set $~lib/memory/__stack_pointer
   local.get $4
  )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments#constructor (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 48
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments#set:field
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_arguments#set:field
+  local.get $0
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result#constructor (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 50
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result#set:value
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result#set:value
+  local.get $0
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#constructor (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i64) (param $4 i32) (param $5 i64) (param $6 i32) (param $7 i64) (param $8 i32) (param $9 i64) (param $10 i32) (param $11 i64) (param $12 i32) (param $13 i32) (param $14 i32) (result i32)
+  (local $15 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 92
+   i32.const 46
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:message_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int32_value
+  local.get $0
+  i64.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int64_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint32_value
+  local.get $0
+  i64.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint64_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint32_value
+  local.get $0
+  i64.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint64_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed32_value
+  local.get $0
+  i64.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed64_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed32_value
+  local.get $0
+  i64.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed64_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bool_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:string_value
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bytes_value
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:message_value
+  local.get $0
+  local.get $2
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int32_value
+  local.get $0
+  local.get $3
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int64_value
+  local.get $0
+  local.get $4
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint32_value
+  local.get $0
+  local.get $5
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint64_value
+  local.get $0
+  local.get $6
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint32_value
+  local.get $0
+  local.get $7
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint64_value
+  local.get $0
+  local.get $8
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed32_value
+  local.get $0
+  local.get $9
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed64_value
+  local.get $0
+  local.get $10
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed32_value
+  local.get $0
+  local.get $11
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed64_value
+  local.get $0
+  local.get $12
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bool_value
+  local.get $0
+  local.get $13
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:string_value
+  local.get $0
+  local.get $14
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bytes_value
+  local.get $0
+  local.set $15
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $15
+ )
+ (func $~lib/@koinos/proto-as/google/protobuf/any/any.Any#constructor (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.const 47
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:type_url
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:value
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:type_url
+  local.get $0
+  local.get $2
+  call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:value
+  local.get $0
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
+ (func $~lib/@koinos/proto-as/google/protobuf/any/any.Any.decode (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $1
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $0
+   i32.load offset=4
+  else
+   local.get $0
+   i32.load
+   local.get $1
+   i32.add
+  end
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  i32.const 0
+  call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#constructor
+  local.tee $3
+  i32.store
+  loop $while-continue|0
+   local.get $0
+   i32.load
+   local.get $2
+   i32.lt_u
+   local.set $4
+   local.get $4
+   if
+    local.get $0
+    call $~lib/as-proto/Reader/Reader#uint32@virtual
+    local.set $5
+    block $break|1
+     block $case2|1
+      block $case1|1
+       block $case0|1
+        local.get $5
+        i32.const 3
+        i32.shr_u
+        local.set $6
+        local.get $6
+        i32.const 1
+        i32.eq
+        br_if $case0|1
+        local.get $6
+        i32.const 2
+        i32.eq
+        br_if $case1|1
+        br $case2|1
+       end
+       local.get $3
+       local.get $0
+       call $~lib/as-proto/Reader/Reader#string@virtual
+       call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:type_url
+       br $break|1
+      end
+      local.get $3
+      local.get $0
+      call $~lib/as-proto/Reader/Reader#bytes@virtual
+      call $~lib/@koinos/proto-as/google/protobuf/any/any.Any#set:value
+      br $break|1
+     end
+     local.get $0
+     local.get $5
+     i32.const 7
+     i32.and
+     call $~lib/as-proto/Reader/Reader#skipType@virtual
+     br $break|1
+    end
+    br $while-continue|0
+   end
+  end
+  local.get $3
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $7
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/value/value.value_type.decode (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $1
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $0
+   i32.load offset=4
+  else
+   local.get $0
+   i32.load
+   local.get $1
+   i32.add
+  end
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  i32.const 0
+  i64.const 0
+  i32.const 0
+  i64.const 0
+  i32.const 0
+  i64.const 0
+  i32.const 0
+  i64.const 0
+  i32.const 0
+  i64.const 0
+  i32.const 0
+  i32.const 0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#constructor
+  local.tee $3
+  i32.store
+  loop $while-continue|0
+   local.get $0
+   i32.load
+   local.get $2
+   i32.lt_u
+   local.set $4
+   local.get $4
+   if
+    local.get $0
+    call $~lib/as-proto/Reader/Reader#uint32@virtual
+    local.set $5
+    block $break|1
+     block $case14|1
+      block $case13|1
+       block $case12|1
+        block $case11|1
+         block $case10|1
+          block $case9|1
+           block $case8|1
+            block $case7|1
+             block $case6|1
+              block $case5|1
+               block $case4|1
+                block $case3|1
+                 block $case2|1
+                  block $case1|1
+                   block $case0|1
+                    local.get $5
+                    i32.const 3
+                    i32.shr_u
+                    local.set $6
+                    local.get $6
+                    i32.const 1
+                    i32.eq
+                    br_if $case0|1
+                    local.get $6
+                    i32.const 2
+                    i32.eq
+                    br_if $case1|1
+                    local.get $6
+                    i32.const 3
+                    i32.eq
+                    br_if $case2|1
+                    local.get $6
+                    i32.const 4
+                    i32.eq
+                    br_if $case3|1
+                    local.get $6
+                    i32.const 5
+                    i32.eq
+                    br_if $case4|1
+                    local.get $6
+                    i32.const 6
+                    i32.eq
+                    br_if $case5|1
+                    local.get $6
+                    i32.const 7
+                    i32.eq
+                    br_if $case6|1
+                    local.get $6
+                    i32.const 8
+                    i32.eq
+                    br_if $case7|1
+                    local.get $6
+                    i32.const 9
+                    i32.eq
+                    br_if $case8|1
+                    local.get $6
+                    i32.const 10
+                    i32.eq
+                    br_if $case9|1
+                    local.get $6
+                    i32.const 11
+                    i32.eq
+                    br_if $case10|1
+                    local.get $6
+                    i32.const 12
+                    i32.eq
+                    br_if $case11|1
+                    local.get $6
+                    i32.const 13
+                    i32.eq
+                    br_if $case12|1
+                    local.get $6
+                    i32.const 14
+                    i32.eq
+                    br_if $case13|1
+                    br $case14|1
+                   end
+                   local.get $3
+                   local.get $0
+                   local.get $0
+                   call $~lib/as-proto/Reader/Reader#uint32@virtual
+                   call $~lib/@koinos/proto-as/google/protobuf/any/any.Any.decode
+                   call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:message_value
+                   br $break|1
+                  end
+                  local.get $3
+                  local.get $0
+                  call $~lib/as-proto/Reader/Reader#int32@virtual
+                  call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int32_value
+                  br $break|1
+                 end
+                 local.get $3
+                 local.get $0
+                 call $~lib/as-proto/Reader/Reader#int64@virtual
+                 call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:int64_value
+                 br $break|1
+                end
+                local.get $3
+                local.get $0
+                call $~lib/as-proto/Reader/Reader#uint32@virtual
+                call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint32_value
+                br $break|1
+               end
+               local.get $3
+               local.get $0
+               call $~lib/as-proto/Reader/Reader#uint64@virtual
+               call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:uint64_value
+               br $break|1
+              end
+              local.get $3
+              local.get $0
+              call $~lib/as-proto/Reader/Reader#sint32@virtual
+              call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint32_value
+              br $break|1
+             end
+             local.get $3
+             local.get $0
+             call $~lib/as-proto/Reader/Reader#sint64@virtual
+             call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sint64_value
+             br $break|1
+            end
+            local.get $3
+            local.get $0
+            call $~lib/as-proto/Reader/Reader#fixed32@virtual
+            call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed32_value
+            br $break|1
+           end
+           local.get $3
+           local.get $0
+           call $~lib/as-proto/Reader/Reader#fixed64@virtual
+           call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:fixed64_value
+           br $break|1
+          end
+          local.get $3
+          local.get $0
+          call $~lib/as-proto/Reader/Reader#sfixed32@virtual
+          call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed32_value
+          br $break|1
+         end
+         local.get $3
+         local.get $0
+         call $~lib/as-proto/Reader/Reader#sfixed64@virtual
+         call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:sfixed64_value
+         br $break|1
+        end
+        local.get $3
+        local.get $0
+        call $~lib/as-proto/Reader/Reader#bool@virtual
+        call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bool_value
+        br $break|1
+       end
+       local.get $3
+       local.get $0
+       call $~lib/as-proto/Reader/Reader#string@virtual
+       call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:string_value
+       br $break|1
+      end
+      local.get $3
+      local.get $0
+      call $~lib/as-proto/Reader/Reader#bytes@virtual
+      call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type#set:bytes_value
+      br $break|1
+     end
+     local.get $0
+     local.get $5
+     i32.const 7
+     i32.and
+     call $~lib/as-proto/Reader/Reader#skipType@virtual
+     br $break|1
+    end
+    br $while-continue|0
+   end
+  end
+  local.get $3
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $7
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result.decode (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $1
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $0
+   i32.load offset=4
+  else
+   local.get $0
+   i32.load
+   local.get $1
+   i32.add
+  end
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result#constructor
+  local.tee $3
+  i32.store
+  loop $while-continue|0
+   local.get $0
+   i32.load
+   local.get $2
+   i32.lt_u
+   local.set $4
+   local.get $4
+   if
+    local.get $0
+    call $~lib/as-proto/Reader/Reader#uint32@virtual
+    local.set $5
+    block $break|1
+     block $case1|1
+      block $case0|1
+       local.get $5
+       i32.const 3
+       i32.shr_u
+       local.set $6
+       local.get $6
+       i32.const 1
+       i32.eq
+       br_if $case0|1
+       br $case1|1
+      end
+      local.get $3
+      local.get $0
+      local.get $0
+      call $~lib/as-proto/Reader/Reader#uint32@virtual
+      call $~lib/@koinos/proto-as/koinos/chain/value/value.value_type.decode
+      call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_transaction_field_result#set:value
+      br $break|1
+     end
+     local.get $0
+     local.get $5
+     i32.const 7
+     i32.and
+     call $~lib/as-proto/Reader/Reader#skipType@virtual
+     br $break|1
+    end
+    br $while-continue|0
+   end
+  end
+  local.get $3
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $7
+ )
+ (func $assembly/proto/todos/todos.todo_added_event#constructor (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 53
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $assembly/proto/todos/todos.todo_added_event#set:task
+  local.get $0
+  local.get $1
+  call $assembly/proto/todos/todos.todo_added_event#set:task
+  local.get $0
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#constructor (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 55
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:name
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:data
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:impacted
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:name
+  local.get $0
+  local.get $2
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:data
+  local.get $0
+  local.get $3
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments#set:impacted
+  local.get $0
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+ )
+ (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__get (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $1
+  local.get $0
+  i32.load offset=12
+  i32.ge_u
+  if
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $2
+  i32.store
+  i32.const 1
+  drop
+  i32.const 0
+  i32.eqz
+  drop
+  local.get $2
+  i32.eqz
+  if
+   unreachable
+  end
+  local.get $2
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+ )
  (func $assembly/proto/todos/todos.get_todos_result#constructor (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
@@ -13052,7 +16897,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 45
+   i32.const 59
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -13095,7 +16940,7 @@
    i32.const 0
    i32.const 2
    i32.const 26
-   i32.const 832
+   i32.const 1472
    call $~lib/rt/__newArray
    local.tee $1
    i32.store
